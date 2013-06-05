@@ -1,11 +1,21 @@
 '''
 This scipt generates random numbers
+with a given bitwidth and size
+
 Created on Oct 4, 2012
 
-@author: Eric Zhang
-'''
-import sys,random,math
+Updated on June 4, 2013
+  Modified: generate unique random numbers 
 
+
+@author: Eric Zhang
+@email: hz9xa@virginia.edu
+'''
+import sys,os,random,math
+
+def create_dir(directory):
+    if not os.path.exists(directory):
+        os.mkdir(directory)
 
 
 if __name__ == "__main__":
@@ -14,16 +24,32 @@ if __name__ == "__main__":
         exit(-1)
     bitwidth = int(sys.argv[1])
     LIMIT = int(sys.argv[2])
+    
+    outdir = "output"
+    create_dir(outdir)
 
-    ofa = open("f" + str(bitwidth) + "a.txt",'w')
-    ofb = open("f" + str(bitwidth) + "b.txt",'w')
+    ofa = open(outdir + "/f" + str(bitwidth) + "a.txt",'w')
+    ofb = open(outdir + "/f" + str(bitwidth) + "b.txt",'w')
+    
+    seta = set()
+    setb = set()
 
-    for j in range(LIMIT):
-        ofa.write('%d\n' % (random.randint(-1*math.pow(2, bitwidth-1),\
-                            (math.pow(2, bitwidth-1)-1))))
-        ofb.write('%d\n' % (random.randint(-1*math.pow(2, bitwidth-1),\
-                            (math.pow(2, bitwidth-1)-1))))
+    while(len(seta) < LIMIT or len(setb) < LIMIT):
+        if(len(seta) < LIMIT):
+            seta.add(random.randint(-1*math.pow(2, bitwidth-1),\
+                            (math.pow(2, bitwidth-1)-1)))
+        if(len(setb) < LIMIT):
+            setb.add(random.randint(-1*math.pow(2, bitwidth-1),\
+                            (math.pow(2, bitwidth-1)-1)))
+
+    for i in range(len(seta)):
+        ofa.write('%d\n' % seta.pop())
+        ofb.write('%d\n' % setb.pop())
    
     ofa.close()
     ofb.close()
-    print('Files generated!\n')                    
+   
+    
+    print('Files generated!')
+    print('Total number of random numbers: ',LIMIT)
+                    
