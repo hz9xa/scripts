@@ -34,19 +34,22 @@ if __name__ == "__main__":
     seta = set()
     setb = set()
 
-    while(len(seta) < LIMIT or len(setb) < LIMIT):
-        if(len(seta) < LIMIT):
-            seta.add(random.randint(-1*math.pow(2, bitwidth-1),\
-                            (math.pow(2, bitwidth-1)-1)))
-        if(len(setb) < LIMIT):
-            setb.add(random.randint(-1*math.pow(2, bitwidth-1),\
+    while(len(seta) < LIMIT):
+        seta.add(random.randint(-1*math.pow(2, bitwidth-1),\
                             (math.pow(2, bitwidth-1)-1)))
 
     for i in range(len(seta)):
         ofa.write('%d\n' % seta.pop())
-        ofb.write('%d\n' % setb.pop())
-   
+
     ofa.close()
+
+    while(len(setb) < LIMIT):
+        setb.add(random.randint(-1*math.pow(2, bitwidth-1),\
+                           (math.pow(2, bitwidth-1)-1)))
+
+    for i in range(len(setb)):
+        ofb.write('%d\n' % setb.pop())
+  
     ofb.close()
    
     
