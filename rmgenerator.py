@@ -19,37 +19,51 @@ def create_dir(directory):
 
 
 if __name__ == "__main__":
-    if(len(sys.argv)!=3):
-        print("python3 rmgenerator.py [bitwidth] [size]")
+    if(len(sys.argv)!=3 and len(sys.argv)!=4):
+        print("python3 rmgenerator.py [bitwidth] [size] <mode hex|dec>")
         exit(-1)
     bitwidth = int(sys.argv[1])
     LIMIT = int(sys.argv[2])
-    
+    mode = 'dec'
+    if(len(sys.argv)==4):
+        mode = sys.argv[3]
+        if(mode != 'dec' and mode!='hex'):
+            print("Specify correct mode");
+            sys.exit(1)
+
     outdir = "output"
     create_dir(outdir)
 
-    ofa = open(outdir + "/f" + str(bitwidth) + "a.txt",'w')
-    ofb = open(outdir + "/f" + str(bitwidth) + "b.txt",'w')
+    ofa = open(outdir + "/f" + str(bitwidth) + "_" + mode + "_a.txt",'w')
+    ofb = open(outdir + "/f" + str(bitwidth) + "_" + mode + "_b.txt",'w')
     
     seta = set()
     setb = set()
 
     while(len(seta) < LIMIT):
-        seta.add(random.randint(-1*math.pow(2, bitwidth-1),\
-                            (math.pow(2, bitwidth-1)-1)))
+#       seta.add(random.randint(-1*math.pow(2, bitwidth-1),\
+#                            (math.pow(2, bitwidth-1)-1)))
+        seta.add(random.randint(0,(math.pow(2, bitwidth-2)-1)))
 
     for i in range(len(seta)):
-        ofa.write('%d\n' % seta.pop())
-
+        a = seta.pop()
+        if(mode=='dec'):
+            ofa.write('%d\n' % a)
+        else:
+            ofa.write('%s\n' % '{0:04x}'.format(a))
     ofa.close()
 
     while(len(setb) < LIMIT):
-        setb.add(random.randint(-1*math.pow(2, bitwidth-1),\
-                           (math.pow(2, bitwidth-1)-1)))
+#        setb.add(random.randint(-1*math.pow(2, bitwidth-1),\
+#                           (math.pow(2, bitwidth-1)-1)))
+        setb.add(random.randint(0,(math.pow(2, bitwidth-2)-1)))
 
     for i in range(len(setb)):
-        ofb.write('%d\n' % setb.pop())
-  
+        b = setb.pop()
+        if(mode=='dec'):
+            ofb.write('%d\n' % b)
+        else:
+            ofb.write('%s\n' % '{0:04x}'.format(b))
     ofb.close()
    
     
