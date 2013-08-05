@@ -9,10 +9,10 @@ def init():
              'rcp':0,'rem':0, 'rsqrt':0,'sad':0,'popc':0,'set':0,\
              'shl':0,'shr':0,'sin':0,'slct':0,'sub':0,'subc':0,\
              'xor':0}
-	typename={'298':'S8_TYPE','299':'S16_TYPE','300':'S32_TYPE',\
-             '301':'S64_TYPE','302':'U8_TYPE','303':'U16_TYPE',\
-             '304':'U32_TYPE','305':'U64_TYPE','306':'F16_TYPE',\
-             '307':'F32_TYPE','308':'F64_TYPE'}
+	typename={'298':'S8','299':'S16','300':'S32',\
+             '301':'S64','302':'U8','303':'U16',\
+             '304':'U32','305':'U64','306':'F16',\
+             '307':'F32','308':'F64'}
 	types={}
 	for key in typename.keys():
 		types[key]=dict(ops)
@@ -39,10 +39,12 @@ if __name__ == '__main__':
 	
 	print("Total # of operations: %d" % size)
 	with open('analysis.txt','w') as of:
+		of.write("Total\t%d\n" % size)
 		for type in types.keys():
-			of.write("%s\n" % (typename[type]))
 			for op in types[type].keys():
-				of.write("%s\t%d\n" % (op,types[type][op]))
-   
+				if types[type][op] != 0:
+					of.write("%s\t%d\t%.2f\n" %\
+                                        (typename[type]+"_"+op,types[type][op],types[type][op]/float(size)))
+   				
 	
 
