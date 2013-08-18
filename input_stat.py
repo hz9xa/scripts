@@ -39,7 +39,7 @@ for line in lines:
         only_b_is_zero += 1;
         continue;
 numbers.sort()
-print(numbers[0]," ",numbers[-1])
+#print(numbers[0]," ",numbers[-1])
 of = open("stat_"+sys.argv[1].strip(".txt") + ".txt","w")
 
 of.write('Both a and b are zero: %d (%f%%) \n'% (both_are_zero,(both_are_zero/len(lines)) * 100 ))
@@ -48,6 +48,9 @@ of.write("At least one zero: %d (%f%%)\n" % (at_least_one_zero,(at_least_one_zer
 of.write("A = 0, B != 0: %d (%f%%)\n" % (only_a_is_zero,(only_a_is_zero/len(lines)) * 100))
 of.write("A != 0, B = 0: %d (%f%%)\n" % (only_b_is_zero,(only_b_is_zero/len(lines))* 100 ))
 of.write("Total # of operations %d\n" % len(lines))
+of.write("Min Addend= %d\n" % numbers[0])
+of.write("Max Addend= %d\n" % numbers[-1])
+
 
 ifile.close();
 of.close()
