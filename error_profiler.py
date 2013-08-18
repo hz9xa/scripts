@@ -28,7 +28,7 @@ if __name__ == "__main__":
     
     posnums.sort()
     negnums.sort()
-    outfile = open('error_profile.txt','w')
+    outfile = open(sys.argv[1].split('.')[0]+'_err_pro.txt','w')
     outfile.write("Total # of errors: %d\n" % len(lines))
     outfile.write("# of positive errors: %d\n" % len(posnums))
     outfile.write("# of negative errors: %d\n" % len(negnums))
@@ -37,7 +37,6 @@ if __name__ == "__main__":
     outfile.write("Max error: %d\n" % posnums[-1])
     outfile.write("Min error: %d\n" % negnums[0])
     outfile.write("Mean error: %.4f\n" % ((sum(posnums)+sum(negnums))/float(len(posnums)+len(negnums))))
-    
     outfile.close()
     infile.close()
     
