@@ -12,11 +12,13 @@ import sys
 
 if __name__ == "__main__":
     if(len(sys.argv)!=2):
-        print("Usage: python3 error_profiler.py [filename] ")
+        print("Usage: python error_profiler.py [filename] ")
         exit(-1)
-
+    
+    
     posnums = []
     negnums = []
+    
     infile = open(sys.argv[1],'r')
     lines = infile.readlines()
     for x in lines:
