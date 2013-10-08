@@ -15,8 +15,8 @@ if __name__ == '__main__':
             data = line.split() 
             ind = int(data[0])
             temp = data[1]
-            row = ind / 512
-            col = ind % 512
+            row = ind / 1024
+            col = ind % 1024
             of.write("%d\t%d\t%s\n" % (row,col,temp));
     of.close()
 
