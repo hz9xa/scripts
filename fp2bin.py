@@ -11,5 +11,5 @@ def fp2bin(a):
 
 if __name__ == "__main__":
     while(True):
-        fp = input("Floating number:")
+        fp = input("Floating Number:")
         print("%s" % fp2bin(fp))
