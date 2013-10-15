@@ -14,7 +14,7 @@ if __name__ == "__main__":
 	len = int(sys.argv[1])
 	while True:
 		cm = input("Enter a floating number(q to exit): ")
-		if cm =='q':
+		if cm == 'q':
 			print("Bye")
 			break;
 		fp = float(cm)
