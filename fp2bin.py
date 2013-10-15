@@ -1,15 +1,21 @@
 #!/usr/bin/python
-import struct
-def binary(num):
-    return ''.join(bin(ord(c)).replace('0b', '').rjust(8, '0')\
-    for c in struct.pack('!f', num))
-        
+from bitstring import BitArray
+import sys
 
-def fp2bin(a):
-    return binary(a)
-
-
+def fp2bin(a,len):
+	alpha = BitArray(float=a,length=len)
+	print(alpha.bin)
+	print(alpha.hex)
+	
 if __name__ == "__main__":
-    while(True):
-        fp = input("Floating Number:")
-        print("%s" % fp2bin(fp))
+	if len(sys.argv) != 2:
+		print("usage: python fp2bin.py [bit width]")
+		sys.exit(1)
+	len = int(sys.argv[1])
+	while True:
+		cm = input("Enter a floating number(q to exit): ")
+		if cm =='q':
+			print("Bye")
+			break;
+		fp = float(cm)
+		fp2bin(fp,len)
