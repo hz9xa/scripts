@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 import struct
 def binary(num):
     return ''.join(bin(ord(c)).replace('0b', '').rjust(8, '0')\
