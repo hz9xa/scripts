@@ -12,5 +12,5 @@
 #PBS -V
 
 cd $PBS_O_WORKDIR
-./run
+python err_prof_sfu.py isfu_err.txt
 
