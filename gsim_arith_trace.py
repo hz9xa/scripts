@@ -1,4 +1,9 @@
 #!/usr/bin/python
+"""
+This script is used for profiling arithmetic operations from a GPGPU benchmark.
+Input provided by arithmetic profiling from GPGPU-SIM 
+Outputs the total count of each operation
+"""
 import os,sys
 
 def init():
