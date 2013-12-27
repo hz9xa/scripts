@@ -1,5 +1,8 @@
 #!/usr/bin/python
-import os,sys
+"""
+Obtain power statistics of interest from GPGPUWattch log file
+"""
+import os,sys,glob
 
 
 def process_file(f):
@@ -32,9 +35,13 @@ def process_file(f):
     
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Please specify stats file: ");
-        sys.exit(1);
+#    if len(sys.argv) != 2:
+#        print("Please specify stats file: ");
+#        sys.exit(1);
 
-    process_file(sys.argv[1])
+    files = glob.glob("gpgpusim_power_report*.log")
+    for file in files:
+        if os.path.getsize(os.getcwd()+file) == 0:
+            os.remove(file)
+        process_file(file)
     print("Done")
