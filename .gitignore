@@ -1,3 +1,5 @@
 *.txt
 output
 *.log
+*.png
+input

@@ -17,9 +17,8 @@ for line in lines:
 (ymax,ymin)=(max(data.max(),refdata.max()),min(data.min(),refdata.min()))
 
 x = np.arange(0,256*256,1)
-p1=plot(x,data,'y')
-p2=plot(x,refdata,'r')
-ylim(-100,ymax)
-legend([p1,p2],["ifpmul_log","ref"])
+p2,=plot(x,refdata,'r')
+p1,=plot(x,data,'y')
+ylim(ymin,ymax)
+legend([p1,p2],["bit_trunc_18","ref"],loc="upper left")
 show()
-
