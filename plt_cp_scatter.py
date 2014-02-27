@@ -19,7 +19,7 @@ for line in lines:
 x = np.arange(0,256*256,1)
 p1=plot(x,data,'y')
 p2=plot(x,refdata,'r')
-ylim(ymin,ymax)
-legend([p1,p2],["ifma+irsqrt","ref"])
+ylim(-100,ymax)
+legend([p1,p2],["ifpmul_log","ref"])
 show()
 

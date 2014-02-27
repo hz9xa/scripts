@@ -13,7 +13,7 @@ if __name__ == "__main__":
 		sys.exit(1)
 	len = int(sys.argv[1])
 	while True:
-		cm = input("Enter a floating number(q to exit): ")
+		cm = raw_input("Enter a floating number(q to exit): ")
 		if cm == 'q':
 			print("Bye")
 			break;

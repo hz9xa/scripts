@@ -29,7 +29,7 @@ zmin=Z.min()
 surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.hot,
         linewidth=0, antialiased=False)
 ax.set_zlim3d(int(zmin-10),int(zmax+10))
-ax.view_init(elev=5,azim=45)
+#ax.view_init(elev=5,azim=45)
 #ax.zaxis.set_major_locator(LinearLocator(10))
 #ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
